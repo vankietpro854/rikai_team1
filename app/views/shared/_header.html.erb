@@ -10,11 +10,11 @@
       </div>
     </div>
   </div>
-  
+
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <%= link_to "Home", home_path, { :class=>"navbar-brand" } %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span> 
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
@@ -29,7 +29,7 @@
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account
@@ -40,6 +40,15 @@
               <li class="divider"></li>
             </ul>
           </li>
+      </ul> -->
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <%= link_to "Đăng Ký", sign_up_path, {:class=>"nav-link"} %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Đăng Nhập</a>
+        </li>
       </ul>
 
     </div>
