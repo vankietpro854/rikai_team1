@@ -1,5 +1,8 @@
 <div id="header">
   <div class="container-fluid text-center">
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
     <div class="jumbotron" style="width: 100%;" id="jumbotron_id">
       <div style="margin-top: -2%; color: white;">
       <img alt="RIKAI-TECHNOLOGY" style="float: left;width: 50px;" src="/assets/rikai.png" />
@@ -12,7 +15,7 @@
   </div>
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <%= link_to "Home", home_path, { :class=>"navbar-brand" } %>
+    <%= link_to "Trang Chủ", home_path, { :class=>"navbar-brand" } %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,33 +25,35 @@
           <a class="nav-link" href="#">Khóa học</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Thông tin</a>
+          <%= link_to "Thông Tin", info_path, { :class=>"nav-link" } %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Hỗ trợ</a>
+          <%= link_to "Hỗ Trợ", info1_path, { :class=>"nav-link" } %>
         </li>
       </ul>
-
-      <!-- <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle color:black" data-toggle="dropdown" style="color:white">
               Account
             </a>
             <ul class="dropdown-menu">
-              <li><a href="">Profile</a></li>
-              <li><a href="">Settings</a></li>
+              <li><%= link_to "Thông tin tài khoản", current_user %></li>
+              <li><%= link_to "Chỉnh sửa thông tin", edit_user_path(current_user) %></li>
               <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: :delete %>
+              </li>
             </ul>
           </li>
-      </ul> -->
-
-      <ul class="nav navbar-nav navbar-right">
+        <% else %>
         <li class="nav-item">
-          <%= link_to "Đăng Ký", sign_up_path, {:class=>"nav-link"} %>
+          <%= link_to "Đăng Ký", sign_up_path, { :class=>"nav-link" } %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Đăng Nhập</a>
+          <%= link_to "Đăng Nhập", login_path, { :class=>"nav-link" } %>
         </li>
+        <% end %>
       </ul>
 
     </div>
