@@ -1,0 +1,5 @@
+<div style="text-align: -webkit-center">
+   <% flash.each do |message_type, message| %>
+       <div style="text-align: center; width: 50%" class="alert alert-<%= message_type %>"><%= message %></div>
+   <% end %>
+</div>

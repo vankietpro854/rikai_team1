@@ -44,19 +44,22 @@
         padding-top: 100px;
       }
 
-      .nav > li > a:focus {
-          text-decoration: none;
-          background-color: black;
+      .nav > li > a:hover, .nav > li > a:focus {
+         text-decoration: none;
+         background-color: darkslategray;
+       }
+
+       .navbar-nav > li > a {
+          padding-top: 15px;
+          color: rgba(255,255,255,.5);
+          padding-bottom: 15px;
       }
+
     </style>
 
   </head>
-
   <body>
-
-
     <%= render 'shared/header' %>
-
 
     <div class="container-fluid">
       <%= yield %>
