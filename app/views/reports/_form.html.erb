@@ -1,0 +1,31 @@
+<%= form_for(@report, local: true) do |form| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@report.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= form.label :User %>
+    <%= form.collection_select :user_id, User.order(:name),:id,:name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.cktext_area :content, :size => 5, :ckeditor => {:language => "us"}  %>
+  </div>  
+
+  <%= form.submit yield(:button_text), class: "btn btn-primary" %></br>
+<% end %>

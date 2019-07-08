@@ -1,0 +1,32 @@
+<%= form_for(@cour, local: true) do |f| %>
+  
+  <% if @cour.errors.any? %>
+	  <div id="error_explanation">
+	    <div class="alert alert-danger">
+	      The form contains <%= pluralize(@cour.errors.count, "error") %>.
+	    </div>
+	    <ul>
+	      <% @cour.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %></br>
+
+  <%= f.label :image_cours %>
+  <%= f.file_field :image_cours, class: 'form-control-file' %></br>
+
+  <%= f.label :content %>
+  <%= f.cktext_area :content, :size => 5, :ckeditor => {:language => "us"}  %>
+
+  </br>
+
+  <%= f.label :time_learn %>
+  <%= f.text_field :time_learn, class: 'form-control' %></br>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %></br>
+	
+<% end %>
