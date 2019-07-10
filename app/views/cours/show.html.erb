@@ -3,37 +3,42 @@
 		<p id="notice"><%= notice %></p>
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<p>
-				  <strong>Name:</strong>
+				<p style="font-size: 20px">
+				  <strong>Khóa học:</strong>
 				  <%= @cour.name %>
 				</p>
-
-				<p>
+				<hr>
+				<p style="font-size: 20px">
 				  <strong>Image:</strong>
 				  <%= @cour.image_cours %>
 				</p>
-
-				<p>
-				  <strong>Content:</strong>
+				<hr>
+				<p style="font-size: 20px">
+				  <strong>Sơ lược:</strong>
 				  <%= raw(@cour.content) %>
 				</p>
-
-				<p>
-				  <strong>Time-Learn: </strong>
+				<hr>
+				<p style="font-size: 20px">
+				  <strong>Thời gian học: </strong>
 				  <%= @cour.time_learn %> Month
 				</p>
 			</div>
 
-			<div class="form-group col-md-6">
-				  <strong>Name:</strong>
-				  	<ul class="list-group">
-					  <% @chapters.each do |chapter| %>
-						<% if chapter.cour.name == @cour.name %>
-						  <%= link_to chapter.name, chapter %>
-						<% end %>
-					  		
-					  <% end %>
+			<div class="form-group col-md-4 col-md-offset-1">
+			    <div class="card">
+					<ul class="list-group list-group-flush">
+						<div class="card-header text-center" style="font-size: 20px">
+						    Danh sách các chương
+						</div>
+					    <li class="list-group-item" style="font-size: 16px;">
+					    	<% @chapters.each do |chapter| %>
+								<% if chapter.cour.name == @cour.name %>
+								  <%= link_to chapter.name, chapter, {:class=>"nav-link"} %>
+								<% end %>
+							<% end %>
+					    </li>
 					</ul>
+				</div>
 
 			</div>
 		</div>
@@ -42,4 +47,6 @@
 
 <%= link_to 'Edit', edit_cour_path(@cour) %> |
 <%= link_to 'Back', cours_path %>
+	
+
 	

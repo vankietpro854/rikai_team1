@@ -3,34 +3,41 @@
 		<p id="notice"><%= notice %></p>
 		<div class="form-row">
 			<div class="form-group col-md-3">
-				<strong>Name:</strong>
-			  	<ul class="list-group">
-				  <% @chapters.each do |chapter| %>
-				  	<% if chapter.cour.name == @chapter.cour.name %>
-					  <%= link_to chapter.name, chapter %>
-					 <% end %>
-				  <% end %>
-				</ul>
+				<div class="card">
+				  <ul class="list-group list-group-flush">
+				  	<div class="card-header text-center" style="font-size: 20px">
+					    <%= @chapter.cour.name %>
+					</div>
+					<div class="card-header text-center" style="font-size: 16px">
+					    <%= @chapter.name %>
+					</div>
+				    <li class="list-group-item">
+				    	<% @chapters.each do |chapter| %>
+						  	<% if chapter.cour.name == @chapter.cour.name %>
+							  <%= link_to chapter.name, chapter, {:class=>"nav-link"}%>
+							 <% end %>
+						  <% end %>
+				    </li>
+				  </ul>
+				</div>
 			</div>
 
 			<div class="form-group col-md-9">
-				<p>
-				  <strong>Name:</strong>
-				  <%= @chapter.name %>
-				</p>
-
-				<p>
-				  <strong>Content:</strong>
-				  <%= raw(@chapter.content) %>
-				</p>
-				
-				<p>
-				  <strong>Course:</strong>
-				  <%= @chapter.cour.name %>
-				</p>
-			</div>
-
-			
+				<div class="card">
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item">
+				    	<p class="text-center" style="font-size: 30px">
+						  <%= @chapter.name %>
+						</p>
+						<hr>
+						<p>
+						  <%= raw(@chapter.content) %>
+						</p>
+						
+				    </li>
+				  </ul>
+				</div>
+			</div>	
 		</div>
 	</form>
 </div>

@@ -31,7 +31,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_report_url(@report)
     assert_response :success
-  end
+  end 
 
   test "should update report" do
     patch report_url(@report), params: { report: { content: @report.content, title: @report.title, user_id: @report.user_id } }

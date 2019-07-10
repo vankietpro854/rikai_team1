@@ -13,17 +13,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :cour_id %>
+    <label>Khóa học</label>
     <%= form.collection_select(:cour_id, Cour.order(:name),:id,:name, include_blank: true) %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
+    <label>Tên chương</label>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <label>Nội dung</label>
     <%= form.cktext_area :content, :size => 5, :ckeditor => {:language => "us"}  %>
   </div>  
 

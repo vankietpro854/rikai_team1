@@ -2,6 +2,13 @@
 
 one:
   name: MyString
+  content: MyString
+  image_cours: MyString
+  time_learn: 2
 
 two:
   name: MyString
+  content: MyString
+  image_cours: MyString
+  time_learn: 2
+

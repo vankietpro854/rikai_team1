@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  content: 
-  course_id: 1
-  chapter_image: MyString
+  content: MyString
+  cour_id: 298486374
 
 two:
-  name: MyString
-  content: 
-  course_id: 1
-  chapter_image: MyString
+  name: abc
+  content: MyString
+  cour_id: 298486374

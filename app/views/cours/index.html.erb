@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cours</h1>
+<h1>DANH SÁCH KHÓA HỌC</h1>
+<br>
+<%= link_to 'Tạo khóa học mới', new_cour_path %>
 <hr>
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th>#</th>
-      <th>Name</th>
-      <th>Content</th>
-      <th>Time learn</th>
+      <th>Tên khóa học</th>
+      <th>Sơ lược</th>
+      <th>Thời gian học</th>
       <th class="text-center">Edit</th>
       <th colspan="3"></th>
     </tr>
@@ -33,4 +35,3 @@
 
 <br>
 
-<%= link_to 'New Cour', new_cour_path %>
