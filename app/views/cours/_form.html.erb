@@ -13,16 +13,19 @@
 	  </div>
 	<% end %>
 
+
   <label>Tên khóa học:</label>
   <%= f.text_field :name, class: 'form-control' %></br>
 
   <label>Hình ảnh cho khóa học:</label>
   <%= f.file_field :image_cours, class: 'form-control-file' %></br>
+
   <label>Sơ lượt về khóa học:</label>
   <%= f.label :content %>
   <%= f.cktext_area :content, :size => 5, :ckeditor => {:language => "us"}  %>
 
   </br>
+
 
   <label>Thời gian học: </label>
   <%= f.text_field :time_learn, class: 'form-control' %></br>

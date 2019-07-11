@@ -8,17 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" media="all" href="/assets/scaffolds.self.css?body=1" data-turbolinks-track="reload" />
     <link rel="stylesheet" media="all" href="/assets/static_pages.self.css?body=1" data-turbolinks-track="reload" />
     <link rel="stylesheet" media="all" href="/assets/users.self.css?body=1" data-turbolinks-track="reload" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
     <style>
     .fakeimg {
@@ -48,6 +50,12 @@
           background-color: darkslategray;
       }
 
+      .navbar-nav > li > a {
+          padding-top: 15px;
+          color: rgba(255,255,255,.5);
+          padding-bottom: 15px;
+      }
+
       #error_explanation {
           width: 450px;
           border: 2px solid green;
@@ -62,16 +70,11 @@
   <body>
 
 
-    <%= render 'shared/header' %>
-      
-
+    <%= render 'shared/header' %>   
     <div class="container-fluid">
       <%= yield %>
     </div>
-    <%= debug(params) if Rails.env.development? %>
     <hr>
-     
-
-     <%= render 'shared/footer' %>      
+     <%= render 'shared/footer' %>
   </body>
 </html>

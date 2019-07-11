@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_074257) do
+ActiveRecord::Schema.define(version: 2019_07_08_075433) do
 
   create_table "chapters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 2019_07_03_074257) do
     t.string "image"
     t.integer "phone"
     t.datetime "date"
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "chapters", "cours"

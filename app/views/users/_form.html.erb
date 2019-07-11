@@ -1,7 +1,6 @@
 
-
 <%= form_for(@user, local: true) do |f| %>
-  
+
   <%= render 'error_messages' %>
 
   <%= f.label :name %>
@@ -10,8 +9,14 @@
   <%= f.label :email %>
   <%= f.email_field :email, class: 'form-control' %></br>
 
-  <%= f.label :image %>
-  <%= f.text_field :image, class: 'form-control' %></br>
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %></br>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %></br>
+
+  <%= f.label :image %><br>
+  <%= f.file_field :image %>
 
   <%= f.label :address %>
   <%= f.text_field :address, class: 'form-control' %></br>
