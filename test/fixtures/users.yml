@@ -3,7 +3,7 @@
 one:
   name: MyString
   email: MyString
-  image: 
+  image: MyString
   address: MyString
   phone: 0395689977
   date: 15/08/1998
@@ -11,7 +11,7 @@ one:
 two:
   name: MyString
   email: MyString
-  image: 
+  image: MyString
   address: MyString
   phone: 039567985
   date: 20/6/2009

@@ -1,0 +1,38 @@
+<%= form_for(@detail_course, local: true) do |f| %>
+  <% if @detail_course.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@detail_course.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @detail_course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Người đăng ký</label>
+    <%= f.collection_select(:user_id, User.order(:name), :id, :name, {},{ class: "form-control"}) %>
+  </div>
+
+  <div class="field">
+    <label>Khóa học</label>
+    <%= f.collection_select(:cour_id, Cour.order(:name),:id,:name, include_blank: true) %>
+  </div>
+  
+  <div class="field">
+    <label>Ngày bắt đầu</label>
+    <%= f.text_field :begin, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label>Ngày kết thúc</label>
+    <%= f.text_field :end, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %></br>
+  </div>
+<% end %>

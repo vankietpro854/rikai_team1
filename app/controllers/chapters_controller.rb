@@ -1,6 +1,7 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_chapter, only: [:edit, :update, :destroy, :show]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:index, :edit, :update, :destroy]
   # GET /chapters
   # GET /chapters.json
   def index
@@ -71,5 +72,17 @@ class ChaptersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
       params.require(:chapter).permit(:name, :content, :cour_id)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

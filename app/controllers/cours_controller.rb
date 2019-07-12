@@ -1,7 +1,9 @@
 class CoursController < ApplicationController
   before_action :set_cour, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:index, :edit, :update, :destroy]
 
-  # GET /cours
+  # GET /cours_url
   # GET /cours.json
   def index
     @cours = Cour.all
@@ -71,5 +73,17 @@ class CoursController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cour_params
       params.require(:cour).permit(:name,:image_cours, :content, :time_learn)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

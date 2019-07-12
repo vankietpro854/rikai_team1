@@ -1,0 +1,3 @@
+module DetailCoursesHelper
+
+end

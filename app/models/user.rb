@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   validates :date, presence: true
   has_many :reports
+  has_many :detail_courses
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }

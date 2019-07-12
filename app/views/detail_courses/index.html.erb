@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chi tiết đăng ký khóa học</h1>
+<%= link_to 'Thêm khóa học mới', new_chapter_path %>
+<hr>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Người đăng ký</th>
+      <th>Khóa học</th>
+      <th>Thời gian bắt đầu</th>
+      <th>Thời gian kết thúc</th>
+      <th class="text-center">Edit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detail_courses.each do |detail_course| %>
+      <tr>
+        <td><%= detail_course.id %></td>
+        <td><%= detail_course.user.name if detail_course.user %></td>
+        <td><%= detail_course.cour.name if detail_course.cour %></td>
+        <td><%= detail_course.begin %></td>
+        <td><%= detail_course.end %></td>
+        <td class="text-center">
+          <%= link_to 'Show', detail_course %> |
+          <%= link_to 'Edit', edit_detail_course_path(detail_course) %> |
+          <%= link_to 'Destroy', detail_course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detail Course', new_detail_course_path %>
+
