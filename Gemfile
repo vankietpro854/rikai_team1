@@ -14,6 +14,7 @@ gem 'bootstrap-will_paginate', '~> 1.0.0'
 gem 'jquery-rails'
 gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
 gem 'ckeditor_rails'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server

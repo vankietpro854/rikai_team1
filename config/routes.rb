@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :detail_courses
   resources :reports
   resources :sessions
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   post 'login', to:'sessions#create'
   delete 'logout', to:'sessions#destroy'
   resources :users
+
 end

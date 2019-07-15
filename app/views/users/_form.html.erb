@@ -1,4 +1,5 @@
 
+
 <%= form_for(@user, local: true) do |f| %>
 
   <%= render 'error_messages' %>
@@ -28,5 +29,3 @@
   <%= f.text_field :date, class: 'form-control' %></br>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %></br>
-
-<% end %>
