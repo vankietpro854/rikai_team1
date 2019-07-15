@@ -15,7 +15,6 @@ default: &default
   pool: 5
   username: root
   password: 1581998
-  # password: Hue123456@
   host: localhost
   database: rikai
   socket: /var/run/mysqld/mysqld.sock
@@ -55,4 +54,3 @@ production:
   database: rikai
   username: root
   password: 1581998
-  # password: Hue123456@

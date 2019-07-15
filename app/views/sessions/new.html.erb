@@ -15,11 +15,11 @@
        <%= f.check_box :remember_me %>
        <span>Remember me on this computer</span>
       <% end %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <div class="text-center">
+        <%= f.submit "Log in", class: "btn btn-primary " %>
+        <h4 >Bạn chưa có tài khoản? <%= link_to "Đăng Ký", sign_up_path %></h4>
+      </div>
     <% end %>
-
-    <h4>Bạn chưa có tài khoản? <%= link_to "Đăng Ký", sign_up_path %></h4>
   </div>
 </div>
 
