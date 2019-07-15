@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   # GET /reports
   # GET /reports.json
@@ -14,7 +16,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    @report = Report.new
+    @report = current_user.reports.build
   end
 
   # GET /reports/1/edit
@@ -75,19 +77,14 @@ class ReportsController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
         redirect_to login_url
       end
     end
 
     # Confirms the correct user.
     def correct_user
-      @users = User.all
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(reports_path) unless current_user?(@user)
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
 end

@@ -1,5 +1,7 @@
 class DetailCoursesController < ApplicationController
   before_action :set_detail_course, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:destroy, :new, :index, :edit, :update, :destroy, :show]
+  before_action :logged_in_user, only: [:destroy, :new, :index, :edit, :update, :destroy, :show]
 
   # GET /detail_courses
   # GET /detail_courses.json
@@ -70,5 +72,18 @@ class DetailCoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def detail_course_params
       params.require(:detail_course).permit(:user_id, :cour_id, :begin, :end)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    def admin_user
+      flash[:danger] = "Please log in admin."
+      redirect_to(root_url) unless current_user.admin?
     end
 end

@@ -84,6 +84,7 @@ class CoursController < ApplicationController
     end
 
     def admin_user
+      flash[:danger] = "Please log in admin."
       redirect_to(root_url) unless current_user.admin?
     end
 end
