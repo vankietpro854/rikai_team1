@@ -40,7 +40,9 @@
             <li><%= link_to "Thông tin tài khoản", current_user %></li>
             <li><%= link_to "Chỉnh sửa thông tin", edit_user_path(current_user) %></li>
             <% if current_user.admin %>
-             <li><%= link_to "Admin quản lý", admin_path %></li>
+              <li><%= link_to "Admin quản lý", admin_path %></li>
+            <% else %>
+              <li><%= link_to "Báo cáo", new_report_path %></li>
             <% end %>
             <li class="divider"></li>
             <li>

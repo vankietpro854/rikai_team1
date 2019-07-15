@@ -10,7 +10,9 @@ class StaticPagesController < ApplicationController
 
   def admin
     @users = User.all # not paginated
-    @users = User.paginate(page: params[:page]) # paginated
+    @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    @reports = Report.all
+    @reports = Report.paginate(:per_page => 7, :page => params[:page]).order('created_at DESC')
   end
 
   private

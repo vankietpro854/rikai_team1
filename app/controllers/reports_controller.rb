@@ -27,16 +27,13 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-
-    respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
-        format.json { render :show, status: :created, location: @report }
+        flash[:success] = "Report was successfully updated"
+        render 'show'
       else
-        format.html { render :new }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        flash[:danger] = "Report wasn't successfully updated"
+        render 'new'
       end
-    end
   end
 
   # PATCH/PUT /reports/1
