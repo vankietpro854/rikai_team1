@@ -3,7 +3,6 @@ class CoursController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :admin_user,     only: [:index, :edit, :update, :destroy]
 
-  # GET /cours_url
   # GET /cours.json
   def index
     @cours = Cour.all

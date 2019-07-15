@@ -17,7 +17,11 @@ class CoursControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cour" do
     assert_difference('Cour.count') do
+<<<<<<< HEAD
       post cours_url, params: { cour: { name: @cour.name, content: @cour.content, image_cours: @cour.image_cours, time_learn: @cour.time_learn } }
+=======
+      post cours_url, params: { cour: { name: @cour.name } }
+>>>>>>> d142df2... Them Cours, Chapter, chinh sua layout
     end
 
     assert_redirected_to cour_url(Cour.last)
@@ -34,7 +38,11 @@ class CoursControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cour" do
+<<<<<<< HEAD
     patch cour_url(@cour), params: { cour: { name: @cour.name, content: @cour.content, image_cours: @cour.image_cours, time_learn: @cour.time_learn } }
+=======
+    patch cour_url(@cour), params: { cour: { name: @cour.name } }
+>>>>>>> d142df2... Them Cours, Chapter, chinh sua layout
     assert_redirected_to cour_url(@cour)
   end
 

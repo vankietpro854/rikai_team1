@@ -4,4 +4,3 @@ class Cour < ApplicationRecord
 	has_many :chapters
 	has_many :detail_courses
 end
-

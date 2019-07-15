@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_07_11_072135) do
 
   create_table "chapters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -19,6 +20,10 @@ ActiveRecord::Schema.define(version: 2019_07_11_072135) do
     t.datetime "updated_at", null: false
     t.bigint "cour_id"
     t.index ["cour_id"], name: "index_chapters_on_cour_id"
+    t.integer "course_id"
+    t.string "chapter_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

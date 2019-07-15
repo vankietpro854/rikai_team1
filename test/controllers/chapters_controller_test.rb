@@ -16,7 +16,7 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create chapter" do
-    assert_difference('Chapter.count') do
+      assert_difference('Chapter.count') do
       post chapters_url, params: { chapter: {name: @chapter.name, content: @chapter.content, cour_id: @chapter.cour_id } }
     end
 
