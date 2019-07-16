@@ -34,6 +34,19 @@
           <strong>Date:</strong>
           <%= @user.date %>
         </p>
+        <% if current_user.admin %>
+          
+       <% else %>
+        <p>
+          <strong>Các khóa học đã đăng ký:</strong>
+            
+            <% @detail_courses.each do |detail| %>
+              <% if current_user.name == detail.user.name %>
+                <%= detail.cour.name %>
+              <% end %>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     </div>
   </form>
@@ -41,7 +54,12 @@
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', admin_path %>
+<% if current_user.admin %>
+  <%= link_to 'Back', admin_path %>
+<% else %>
+  <%= link_to 'Back', root_url %>
+<% end %>
+
 <style>
   p {
     margin: 0 0 10px;

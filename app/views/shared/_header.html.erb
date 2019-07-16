@@ -24,7 +24,7 @@
           <%= link_to "Thông Tin", info_path, { :class=>"nav-link" } %>
         </li>
         <li class="nav-item">
-          <%= link_to "Hỗ Trợ", info1_path, { :class=>"nav-link" } %>
+          <%= link_to "Hỗ Trợ", suport_new_path, { :class=>"nav-link" } %>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -42,7 +42,7 @@
             <% if current_user.admin %>
               <li><%= link_to "Admin quản lý", admin_path %></li>
             <% else %>
-              <li><%= link_to "Báo cáo", new_report_path %></li>
+              <li><%= link_to "Báo cáo", reports_path %></li>
             <% end %>
             <li class="divider"></li>
             <li>

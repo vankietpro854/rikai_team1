@@ -23,7 +23,7 @@
 
     <h3>Some Lessions</h3>
     <ul class="nav nav-pills flex-column">
-      <% Cour.all.each do |cour| %> 
+      <% @cours[0...10].each do |cour| %> 
         <li ><%= link_to cour.name, cour %></li>
       <% end %>
     </ul>

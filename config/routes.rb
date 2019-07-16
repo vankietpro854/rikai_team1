@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :suports
   resources :detail_courses
   resources :reports
   resources :sessions
   resources :chapters
   resources :cours
   root 'static_pages#home'
+  get '/suport_new', to: 'suports#new'
   get '/home', to: 'static_pages#home'
   get '/info', to: 'static_pages#information'
   get '/info1', to: 'static_pages#support'

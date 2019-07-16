@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<% provide(:title, 'contact') %>
+<body>
+
+<div class="w3-container w3-light-grey" style="padding:60px 20px" id="contact">
+  <h3 class="w3-center" text-align:center>Hỗ trợ trực tuyến Online</h3>
+  <div  align="center"; style="margin-top:48px">
+    <p><i class="fa fa-map-marker" aria-hidden="true"></i> VietNam,Japan</p>
+    <p><i class="fa fa-phone" aria-hidden="true"></i> Phone: (+81) 03 3447 6278</p>
+    <p><i class="fa fa-envelope" aria-hidden="true"></i> Email: contact@rikai.technology</p>
+    <br>
+      <%= form_for(@suport, local: true) do |form| %>
+        <% if @suport.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-danger">
+              The form contains <%= pluralize(@suport.errors.count, "error") %>.
+            </div>
+            <ul>
+              <% @suport.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p class="col-md-4 col-md-offset-4">
+          <%= form.text_field :name, placeholder: "Name" %>
+        </p>
+        <p class="col-md-4 col-md-offset-4">
+          <%= form.text_field :emai, placeholder: "Email" %>
+        </p>
+        <p class="col-md-4 col-md-offset-4">
+          <%= form.text_field :subject, placeholder: "Subject" %>
+        </p>
+        <p class="col-md-4 col-md-offset-4">
+          <%= form.text_field :message, placeholder: "message" %>
+        </p>
+        <p class="col-md-4 col-md-offset-4">
+           <%= form.submit yield(:button_text), class: "btn btn-primary" %></br>
+        </p>
+      <% end %>
+  </div>
+</div>
+</body>
+</html>

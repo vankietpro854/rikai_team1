@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   before_action :admin_user,     only: :admin
 
   def home
+    @cours = Cour.all
   end
 
   def help
@@ -13,6 +14,7 @@ class StaticPagesController < ApplicationController
     @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
     @reports = Report.all
     @reports = Report.paginate(:per_page => 7, :page => params[:page]).order('created_at DESC')
+    @detail_courses = DetailCourse.all
   end
 
   private

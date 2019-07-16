@@ -16,6 +16,7 @@
 
   <tbody>
     <% @reports.each do |report| %>
+      <% if current_user.id == report.user.id %>
       <tr>
         <td><%= report.id %></td>
         <td><%= report.title %></td>
@@ -23,10 +24,13 @@
         <td><%= raw(report.content) %></td>
         <td class="text-center">
           <%= link_to 'Show', report %> |
+          <% if report.created_at.beginning_of_day == DateTime.now.to_date %>
           <%= link_to 'Edit', edit_report_path(report) %> |
+          <% end %>
           <%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
