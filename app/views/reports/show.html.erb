@@ -1,35 +1,24 @@
-<div class="container">
-	<form>
-		<div class="form-row">
-			<div class="form-group col-md-8">
-				
-				<p>
-				  <strong>User Name:</strong>
-				  <%= @report.user.name %>
-				</p>
 
-				<p>
-				  <strong>User Email:</strong>
-				  <%= @report.user.email %>
-				</p>
+<div class="form-group col-md-8 col-md-offset-2 ">	
+	<div class="card">
+		<ul class="list-group list-group-flush">
+		  <div class="card-header" style="font-size: 20px">
+		     Name: <%= @report.user.name %> | Email: <%= @report.user.email %>
+		  </div>
 
-				<p>
-				  <strong>Name:</strong>
-				  <%= @report.title %>
-				</p>
+		  <div class="card-header" style="font-size: 20px">
+		     Nôi dụng: <%= @report.title %>
+		  </div>
+		  <li class="list-group-item">
+		    <%= raw(@report.content) %>
+		  </li>
+		</ul>
+	</div>
+	<br>
+	<% if current_user.admin %>
+	  <%= link_to 'Quay lại trang admin', admin_path %>
+	<% else %>
+	  <%= link_to 'Quay lại', reports_path %>
+	<% end %>
+</div>	
 
-				<p>
-				  <strong>Content:</strong>
-				  <%= raw(@report.content) %>
-				</p>
-				
-			</div>
-		</div>
-	</form>
-</div>
-
-<% if current_user.admin %>
-  <%= link_to 'Quay lại trang admin', admin_path %>
-<% else %>
-  <%= link_to 'Quay lại', reports_path %>
-<% end %>

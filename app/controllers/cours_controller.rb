@@ -5,7 +5,11 @@ class CoursController < ApplicationController
 
   # GET /cours.json
   def index
-    @cours = Cour.all
+    @cours = if params[:timkiem]
+      Cour.where('name LIKE ?', "%#{params[:timkiem]}%")
+    else
+      @cours = Cour.all
+    end
   end
 
   # GET /cours/1
@@ -64,7 +68,7 @@ class CoursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cour_params
-      params.require(:cour).permit(:name,:image_cours, :content, :time_learn)
+      params.require(:cour).permit(:name,:image_cours, :content, :time_learn, :term)
     end
 
     def logged_in_user

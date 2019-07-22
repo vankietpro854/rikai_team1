@@ -7,7 +7,16 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+
+  end
+
+  def index
+    @users = if params[:timkiem]
+      User.where('hoten LIKE ?', "%#{params[:timkiem]}%")
+    else
+      @users = User.all
+      @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    end
   end
 
   # GET /users/1

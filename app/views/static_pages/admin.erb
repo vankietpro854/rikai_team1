@@ -1,7 +1,9 @@
+<div id="show"></div>
 <form>
   <div class="form-row">
-    <div class="form-group col-md-3">
-      <div class="card">
+    <div class="form-group col-md-8 col-md-offset-2 ">
+
+      <div class="card" id="tk">
         <ul class="list-group list-group-flush">
           <div class="card-header text-center" style="font-size: 20px">
               Thông tin tất cả tài khoản
@@ -13,18 +15,18 @@
               <p class="text-center" style="font-size:16px; color: green;">
                 <br>
                     <%= link_to "Show", user %> |
-                    <%= link_to "Edit", edit_user_path(user) %> |
-                    <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }%>
+                    <%= link_to "Edit", edit_user_path(user) %> 
+                    <% if current_user.admin? && !current_user?(user) %>
+                      | <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }%>
+                    <% end %>
               </p>
               <hr>
             <% end %>
           </li>
         </ul>
       </div>
-    </div>
-    <!-- ----------------------------------- -->
-    <div class="form-group col-md-3">
-      <div class="card">
+
+      <div class="card" id="bc">
         <ul class="list-group list-group-flush">
           <div class="card-header text-center" style="font-size: 20px">
             Báo cáo của người dùng
@@ -32,21 +34,19 @@
           <li class="list-group-item">
             <% @reports.each do |report| %>
                 <p style="font-size: 20px">
-                  <%= report.user.name %> 
+                  <%= report.user.name %>
                 </p>
                 <p style="font-size: 15px">
-                  <%= report.title %> 
+                  <%= report.title %>
                 </p>
                 <p class="text-right"><%= link_to "Show", report%></p>
-              
+                <hr>
             <% end %>
           </li>
         </ul>
       </div>
-    </div>
-    <!-- ----------------------------------- -->
-    <div class="form-group col-md-4">
-      <div class="card">
+
+      <div class="card" id="kh">
         <ul class="list-group list-group-flush">
           <div class="card-header text-center" style="font-size: 20px">
             Quản lý khóa học
@@ -54,23 +54,25 @@
           <li class="list-group-item">
             <% @detail_courses.each do |detail_course| %>
               <p style="font-size: 18px">
-                  Người đăng ký: <%= detail_course.user.name %> | Khóa học:  
+                  Người đăng ký: <%= detail_course.user.name %> | Khóa học:
                   <%= detail_course.cour.name %>
               </p>
 
              <p class="text-center" style="font-size:16px; color: green;">
               <br>
                   <%= link_to "Show", detail_course %> |
-                  <%= link_to "Edit", edit_detail_course_path(detail_course) %> |
+                  <%= link_to "Edit", detail_course_path(detail_course) %> |
                   <%= link_to "Delete", detail_course, method: :delete, data: { confirm: "You sure?" }%>
               </p>
               <hr>
             <% end %>
           </li>
         </ul>
+
       </div>
+      <%= will_paginate @users %>
     </div>
-    <!-- ----------------------------------- -->
+
     <div class="form-group col-md-2">
       <div class="card">
         <ul class="list-group list-group-flush">
@@ -80,10 +82,13 @@
           <li class="list-group-item">
             <p class="text-center" style="font-size:16px;">
                   <%= link_to "Thêm tài khoản người dùng", sign_up_path, { :class=>"nav-link" } %>
-                  <%= link_to "Danh sách khóa học", cours_path, { :class=>"nav-link" } %>
-                  <%= link_to "Danh sách chương", chapters_path, { :class=>"nav-link" } %>
+                  <%= link_to "Khóa học", cours_path, { :class=>"nav-link" } %>
+                  <%= link_to "Sách chương", chapters_path, { :class=>"nav-link" } %>
                   <%= link_to "Đăng ký khóa học", new_detail_course_path, { :class=>"nav-link" } %>
-                  <%= link_to "Phản hồi người dùng", suports_path, { :class=>"nav-link" } %>
+                  <%= link_to "Phản hồi người dùng", suports_path, { :class=>"nav-link", :style=>"margin-bottom: -4%;" } %>
+                  <div class="nav-link text-center th" id="nguoidung">Báo cáo</div>
+                  <div class="nav-link text-center th" id="khoahoc">Khóa học</div>
+                  <div class="nav-link text-center th" id="taikhoan">Tài khoản người dùng</div>
             </p>
           </li>
         </ul>
@@ -92,4 +97,23 @@
 
   </div>
 </form>
-<%= will_paginate @users %>
+
+<script>
+$(document).ready(function(){
+  $("#taikhoan").click(function(){
+    $("#tk").show();
+    $("#bc").hide();
+    $("#kh").hide();
+  });
+  $("#nguoidung").click(function(){
+    $("#tk").hide();
+    $("#bc").show();
+    $("#kh").hide();
+  });
+  $("#khoahoc").click(function(){
+    $("#tk").hide();
+    $("#bc").hide();
+    $("#kh").show();
+  });
+});
+</script>

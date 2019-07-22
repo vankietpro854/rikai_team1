@@ -23,9 +23,13 @@
 
     <h3>Some Lessions</h3>
     <ul class="nav nav-pills flex-column">
-      <% @cours[0...10].each do |cour| %> 
+      <% @cours.each do |cour| %> 
         <li ><%= link_to cour.name, cour %></li>
       <% end %>
+    </ul>
+    <hr>
+    <ul class="nav nav-pills flex-column">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.211366414894!2d106.65701595086428!3d10.79511726176144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529338e703e39%3A0xb7bc7a54ba18c57b!2zMjdBIEhvw6BuZyBWaeG7h3QsIFBoxrDhu51uZyA0LCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1563770791028!5m2!1svi!2s" width="100%" height="320px" frameborder="0" style="border:0" allowfullscreen></iframe>
     </ul>
 
     <hr class="d-sm-none">
@@ -49,6 +53,7 @@
   </div>
 </div>
 <hr>
+
 <div class="w3-container" style="padding:5px 16px" id="team">
   <h3 class="w3-center">Team 1</h3>
   <p class="w3-center w3-large">Thực tập sinh tại công ty Rikai Technology.</p>
@@ -61,10 +66,11 @@
           <h3>Lê Văn Ân</h3>
           <p class="w3-opacity">Thực tập sinh</p>
           <p>Sinh viên thực tập vị trí Ruby</p>
-          <p><button class="w3-button w3-light-grey w3-block"><a class="fa fa-envelope" href="https://www.facebook.com/lean79918030" target="_blank"></i> Liên hệ</a></button></p>
+          <p> <a class="fa fa-envelope" href="https://www.facebook.com/lean79918030" target="_blank"><button class="w3-button w3-light-grey w3-block" >Liên hệ</button></a></p>
         </div>
       </div>
     </div>
+
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
         <img src="/assets/hue.jpg" alt="Jane" style="width:100%">
@@ -73,10 +79,11 @@
           <h3>Nguyễn Văn Huệ</h3>
           <p class="w3-opacity">Thực tập sinh</p>
           <p>Sinh viên thực tập vị trí Ruby</p>
-          <p><button class="w3-button w3-light-grey w3-block" ><a class="fa fa-envelope" href="https://www.facebook.com/hue.nguyenvan.142" target="_blank"> Liên hệ</a></button></p>
+          <p> <a class="fa fa-envelope" href="https://www.facebook.com/hue.nguyenvan.142" target="_blank"><button class="w3-button w3-light-grey w3-block" >Liên hệ</button></a></p>
         </div>
       </div>
     </div>
+
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
         <img src="/assets/ngoc.jpg" alt="Mike" style="width:100%">
@@ -85,10 +92,11 @@
           <h3>Tăng Dương Như Ngọc</h3>
           <p class="w3-opacity">Thực tập sinh</p>
           <p>Sinh viên thực tập vị trí Ruby</p>
-          <p><button class="w3-button w3-light-grey w3-block" ><a class="fa fa-envelope" href="https://www.facebook.com/ngoc.nhu.5494360" target="_blank"> Liên hệ</a></button></p>
+          <p> <a class="fa fa-envelope" href="https://www.facebook.com/ngoc.nhu.5494360" target="_blank"><button class="w3-button w3-light-grey w3-block" >Liên hệ</button></a></p>
         </div>
       </div>
     </div>
+
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
         <img src="/assets/duy.jpg" alt="Dan" style="width:100%">
@@ -97,7 +105,7 @@
           <h3>Nguyễn Hoàng Duy</h3>
           <p class="w3-opacity">Thực tập sinh</p>
           <p>Sinh viên thực tập vị trí Ruby</p>
-          <p><button class="w3-button w3-light-grey w3-block"><a class="fa fa-envelope" href="https://www.facebook.com/profile.php?id=100009045307669 " target="_blank"> Liên hệ</a></button></p>
+          <p> <a class="fa fa-envelope" href="https://www.facebook.com/profile.php?id=100009045307669" target="_blank"><button class="w3-button w3-light-grey w3-block" >Liên hệ</button></a></p>
         </div>
       </div>
     </div>

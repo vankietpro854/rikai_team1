@@ -2,6 +2,14 @@
 
 
 <h1 align="center">DANH SÁCH KHÓA HỌC</h1>
+<div style="text-align: -webkit-center;">
+  <form class="form-inline my-2 my-lg-1" style="width: 30%;">
+      <%= form_tag(cours_path, method: :get) do %>
+      <%= text_field_tag :timkiem , params[:timkiem] %>
+      <div style="text-align: -webkit-center; width: 100%;"> <%= submit_tag 'Tìm kiếm', name: nil %> </div>     
+      <% end %>
+  </form>
+</div>
 <%= link_to 'Tạo khóa học mới', new_cour_path %>
 <hr>
 <table class="table">
@@ -35,4 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
