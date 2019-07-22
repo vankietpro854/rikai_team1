@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :suports
+  resources :suports, only: [:create, :destroy]
   resources :detail_courses
   resources :reports
   resources :sessions
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get 'support', to: 'static_pages#support'
   get 'information', to: 'static_pages#information'
   get '/admin', to: 'static_pages#admin'
-  get '/cours', to: 'cours#index'
   get '/chapters', to: 'chapters#index'
   get 'sign_up',  to: 'users#new'
   get 'login', to: 'sessions#new'

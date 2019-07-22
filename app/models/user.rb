@@ -15,8 +15,8 @@ class User < ApplicationRecord
   validates :phone, presence: true, length: { maximum: 10 }
 
   validates :date, presence: true
-  has_many :reports
-  has_many :detail_courses
+  has_many :reports, dependent: :destroy
+  has_many :detail_courses, dependent: :destroy
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }

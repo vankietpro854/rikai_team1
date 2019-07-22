@@ -1,7 +1,7 @@
 class CoursController < ApplicationController
-  before_action :set_cour, only: [:show]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :new]
-  before_action :admin_user,     only: [:index, :edit, :update, :destroy, :new]
+  before_action :set_cour, only: [:show, :edit,:update]
+  before_action :logged_in_user, only: [:index, :edit, :destroy, :new]
+  before_action :admin_user,     only: [:index, :edit, :destroy, :new]
 
   # GET /cours.json
   def index
@@ -27,40 +27,33 @@ class CoursController < ApplicationController
   # POST /cours.json
   def create
     @cour = Cour.new(cour_params)
-
-    respond_to do |format|
       if @cour.save
-        format.html { redirect_to @cour, notice: 'Cour was successfully created.' }
-        format.json { render :show, status: :created, location: @cour }
+        flash[:success] = "Thêm khóa học thành công"
+        redirect_to @cour
       else
-        format.html { render :new }
-        format.json { render json: @cour.errors, status: :unprocessable_entity }
+        flash[:danger] = "Thêm khóa học không thành công"
+        render 'new'
       end
-    end
   end
 
   # PATCH/PUT /cours/1
   # PATCH/PUT /cours/1.json
   def update
-    respond_to do |format|
       if @cour.update(cour_params)
-        format.html { redirect_to @cour, notice: 'Cour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cour }
+        flash[:success] = "Chỉnh sửa khóa học thành công"
+        redirect_to @cour
       else
-        format.html { render :edit }
-        format.json { render json: @cour.errors, status: :unprocessable_entity }
+        flash[:danger] = "Chỉnh sửa khóa học không thành công"
+        render 'new'
       end
-    end
   end
 
   # DELETE /cours/1
   # DELETE /cours/1.json
   def destroy
-    @cour.destroy
-    respond_to do |format|
-      format.html { redirect_to cours_url, notice: 'Cour was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    Cour.find(params[:id]).destroy
+    flash[:success] = "Đăng ký khóa học deleted"
+    redirect_to cours_url
   end
 
   private

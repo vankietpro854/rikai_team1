@@ -1,7 +1,7 @@
 class DetailCoursesController < ApplicationController
-  before_action :set_detail_course, only: [:show, :edit, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :new, :show]
-  before_action :admin_user,     only: [:index, :edit, :update, :destroy, :new]
+  before_action :set_detail_course, only: [:show, :edit,:update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :destroy, :new, :show]
+  before_action :admin_user,     only: [:index, :edit, :destroy, :new, :show]
 
   # GET /detail_courses
   # GET /detail_courses.json
@@ -27,40 +27,33 @@ class DetailCoursesController < ApplicationController
   # POST /detail_courses.json
   def create
     @detail_course = DetailCourse.new(detail_course_params)
-
-    respond_to do |format|
       if @detail_course.save
-        format.html { redirect_to @detail_course, notice: 'Detail course was successfully created.' }
-        format.json { render :show, status: :created, location: @detail_course }
+        flash[:success] = "Đăng ký khóa học thành công"
+        redirect_to @detail_course
       else
-        format.html { render :new }
-        format.json { render json: @detail_course.errors, status: :unprocessable_entity }
+        flash[:danger] = "Đăng ký khóa học không thành công"
+        render 'new'
       end
-    end
   end
 
   # PATCH/PUT /detail_courses/1
   # PATCH/PUT /detail_courses/1.json
   def update
-    respond_to do |format|
       if @detail_course.update(detail_course_params)
-        format.html { redirect_to @detail_course, notice: 'Detail course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @detail_course }
+        flash[:success] = "Thay đổi đăng ký khóa học thành công"
+        redirect_to @detail_course
       else
-        format.html { render :edit }
-        format.json { render json: @detail_course.errors, status: :unprocessable_entity }
+        flash[:danger] = "Thay đổi đăng ký khóa học không thành công"
+        render 'new'
       end
-    end
   end
 
   # DELETE /detail_courses/1
   # DELETE /detail_courses/1.json
   def destroy
-    @detail_course.destroy
-    respond_to do |format|
-      format.html { redirect_to detail_courses_url, notice: 'Detail course was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    DetailCourse.find(params[:id]).destroy
+    flash[:success] = "Đăng ký khóa học deleted"
+    redirect_to detail_courses_url
   end
 
   private

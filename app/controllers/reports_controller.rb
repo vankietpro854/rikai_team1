@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show, :new]
+  before_action :set_report, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :destroy, :new, :show]
+  before_action :correct_user,   only: [:destroy, :edit, :new]
 
   # GET /reports
   # GET /reports.json
@@ -27,10 +28,10 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
       if @report.save
-        flash[:success] = "Report was successfully updated"
-        render 'show'
+        flash[:success] = "Report was successfully create"
+        redirect_to @report
       else
-        flash[:danger] = "Report wasn't successfully updated"
+        flash[:danger] = "Report wasn't successfully create"
         render 'new'
       end
   end
@@ -38,25 +39,21 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1
   # PATCH/PUT /reports/1.json
   def update
-    respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
-        format.json { render :show, status: :ok, location: @report }
+        flash[:success] = "Report was successfully update"
+        redirect_to @report
       else
-        format.html { render :edit }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        flash[:danger] = "Report wasn't successfully update"
+        render 'new'
       end
-    end
   end
 
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
-    @report.destroy
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+   Report.find(params[:id]).destroy
+   flash[:success] = "Report deleted"
+   redirect_to reports_url
   end
 
   private
@@ -78,4 +75,8 @@ class ReportsController < ApplicationController
       end
     end
 
+    def correct_user
+      @report = current_user.reports.find_by(id: params[:id])
+      redirect_to reports_url if @report.nil?
+    end
 end
