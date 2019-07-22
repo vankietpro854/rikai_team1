@@ -17,3 +17,20 @@
   }
 }
 
+#taikhoan,#khoahoc,#nguoidung{
+  cursor: pointer;
+}
+#bc,#kh{
+  display:none;
+}
+.th{
+  font-size: 16px;
+  font-family: verdana, arial, helvetica, sans-serif;
+      color: #666;
+}
+
+.th:hover, .th:focus {
+    color: #23527c;
+    text-decoration: none;
+    background-color: #000;
+}

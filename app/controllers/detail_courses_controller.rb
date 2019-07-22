@@ -1,7 +1,7 @@
 class DetailCoursesController < ApplicationController
   before_action :set_detail_course, only: [:show, :edit, :destroy]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :new, :show]
-  before_action :admin_user,     only: [:index, :edit, :update, :destroy, :new]
+  before_action :admin_user,     only: [:edit, :update, :destroy, :new]
 
   # GET /detail_courses
   # GET /detail_courses.json
