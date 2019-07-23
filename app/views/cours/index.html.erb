@@ -32,13 +32,16 @@
         <td><%= cour.name %></td>
         <td><%= raw(cour.content) %></td>
         <td><%= cour.time_learn %> month </td>
-        <% if current_user.admin? %>
         <td class="text-center">
-          <%= link_to 'Show', cour %> |
+          <% if current_user.admin? %>
+          <%= link_to 'Show', cour %> | 
           <%= link_to 'Edit', edit_cour_path(cour) %> |
           <%= link_to 'Destroy', cour, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% else %>
+             <%= link_to 'Show', cour %>
+          <% end %>
         </td>
-        <% end %>
+        
       </tr>
     <% end %>
   </tbody>

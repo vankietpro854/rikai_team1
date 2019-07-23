@@ -30,7 +30,7 @@ class SuportsController < ApplicationController
 
       if @suport.save
         flash[:success] = "Thank you for respond."
-        render 'show'
+        redirect_to root_url
       else
         flash[:danger] = "User wasn't successfully respond"
         render 'new'

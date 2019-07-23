@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update]
   before_action :logged_in_user, only: [:index, :edit, :destroy, :new, :show]
-  before_action :correct_user,   only: [:destroy, :edit, :new]
+  before_action :correct_user,   only: [:destroy, :edit]
 
   # GET /reports
   # GET /reports.json

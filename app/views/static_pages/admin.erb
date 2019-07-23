@@ -1,8 +1,13 @@
-<div id="show"></div>
 <form>
   <div class="form-row">
     <div class="form-group col-md-8 col-md-offset-2 ">
-
+      <div style="text-align: -webkit-center;">
+            <%= form_tag(admin_path, method: :get) do %>
+            <%= text_field_tag :timkiem , params[:timkiem] %>
+            <div style="text-align: -webkit-center; width: 100%;"> <%= submit_tag 'Tìm kiếm', name: nil %> </div>     
+            <% end %>
+            <hr>  
+      </div>
       <div class="card" id="tk">
         <ul class="list-group list-group-flush">
           <div class="card-header text-center" style="font-size: 20px">
@@ -70,7 +75,6 @@
         </ul>
 
       </div>
-      <%= will_paginate @users %>
     </div>
 
     <div class="form-group col-md-2">

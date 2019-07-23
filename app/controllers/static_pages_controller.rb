@@ -10,10 +10,20 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-    @users = User.all # not paginated
-    @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-    @reports = Report.all
-    @reports = Report.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
+    @users = if params[:timkiem]
+      User.where('name LIKE ?', "%#{params[:timkiem]}%")
+    else
+      @users = User.all # not paginated
+      @users = User.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    end
+
+    @reports = if params[:timkiem]
+      Report.joins(:user).where('users.name LIKE ?', "%#{params[:timkiem]}%")
+    else
+      @reports = Report.all
+      @reports = Report.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
+    end
+
     @detail_courses = DetailCourse.all
     @detail_courses = DetailCourse.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
   end

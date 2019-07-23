@@ -1,7 +1,7 @@
 class CoursController < ApplicationController
   before_action :set_cour, only: [:show, :edit,:update]
   before_action :logged_in_user, only: [:index, :edit, :destroy, :new]
-  before_action :admin_user,     only: [:index, :edit, :destroy, :new]
+  before_action :admin_user,     only: [:edit, :destroy, :new]
 
   # GET /cours.json
   def index
