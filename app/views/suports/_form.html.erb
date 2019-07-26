@@ -1,10 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<% provide(:title, 'contact') %>
-<body>
-
 <div class="w3-container w3-light-grey" style="padding:60px 20px" id="contact">
   <h3 class="w3-center" text-align:center>Hỗ trợ trực tuyến Online</h3>
   <div  align="center"; style="margin-top:48px">
@@ -25,23 +19,27 @@
             </ul>
           </div>
         <% end %>
-        <p class="col-md-4 col-md-offset-4">
+        
+        <div class="col-md-4 col-md-offset-4">
           <%= form.text_field :name, placeholder: "Name" %>
-        </p>
-        <p class="col-md-4 col-md-offset-4">
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
           <%= form.text_field :emai, placeholder: "Email" %>
-        </p>
-        <p class="col-md-4 col-md-offset-4">
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
           <%= form.text_field :subject, placeholder: "Subject" %>
-        </p>
-        <p class="col-md-4 col-md-offset-4">
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
           <%= form.text_field :message, placeholder: "message" %>
-        </p>
-        <p class="col-md-4 col-md-offset-4">
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
            <%= form.submit yield(:button_text), class: "btn btn-primary" %></br>
-        </p>
+        </div>
+
       <% end %>
   </div>
 </div>
-</body>
-</html>

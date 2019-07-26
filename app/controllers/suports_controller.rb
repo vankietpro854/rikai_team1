@@ -1,5 +1,5 @@
 class SuportsController < ApplicationController
-  before_action :set_suport, only: [:show, :edit, :update, :destroy]
+  before_action :set_suport, only: [:show, :destroy]
   before_action :logged_in_user, only: [:index, :edit, :destroy]
   before_action :admin_user,     only: [:index, :edit, :destroy]
 
@@ -29,10 +29,10 @@ class SuportsController < ApplicationController
     @suport = Suport.new(suport_params)
 
       if @suport.save
-        flash[:success] = "Thank you for respond."
+        flash[:success] = "Cảm ơn bạn đã gửi phản hồi."
         redirect_to root_url
       else
-        flash[:danger] = "User wasn't successfully respond"
+        flash[:danger] = "Gửi phản hồi lỗi hãy kiểm tra lại."
         render 'new'
       end
   end

@@ -3,10 +3,10 @@
 one:
   name: MyString
   content: MyString
-  cour_id: 298486374
+  cour_id: 980190962
 
 two:
-  name: abc
+  name: MyString
   content: MyString
-  cour_id: 298486374
+  cour_id: 980190962
 

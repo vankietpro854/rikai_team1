@@ -3,14 +3,21 @@ require 'test_helper'
 class ChaptersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @chapter = chapters(:one)
+    @user = users(:michael)
   end
 
   test "should get index" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get chapters_url
     assert_response :success
   end
 
   test "should get new" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get new_chapter_url
     assert_response :success
   end
@@ -23,12 +30,10 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to chapter_url(Chapter.last)
   end
 
-  test "should show chapter" do
-    get chapter_url(@chapter)
-    assert_response :success
-  end
-
   test "should get edit" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get edit_chapter_url(@chapter)
     assert_response :success
   end
@@ -39,6 +44,9 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy chapter" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     assert_difference('Chapter.count', -1) do
       delete chapter_url(@chapter)
     end

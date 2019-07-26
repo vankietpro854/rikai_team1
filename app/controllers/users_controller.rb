@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         flash[:success] = "User was successfully updated"
-        render 'show'
+        redirect_to @user
       else
         flash[:danger] = "User wasn't successfully updated"
         render 'new'

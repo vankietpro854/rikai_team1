@@ -3,4 +3,5 @@ class Cour < ApplicationRecord
 	validates :content, :time_learn, presence: true
 	has_many :chapters, dependent: :destroy
 	has_many :detail_courses, dependent: :destroy
+	mount_uploader :image_cours, ImageUploader
 end

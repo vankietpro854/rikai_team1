@@ -30,7 +30,7 @@
       <tr>
         <td><%= cour.id %></td>
         <td><%= cour.name %></td>
-        <td><%= raw(cour.content) %></td>
+        <td><%= truncate(raw(cour.content), length: 150) %></td>
         <td><%= cour.time_learn %> month </td>
         <td class="text-center">
           <% if current_user.admin? %>

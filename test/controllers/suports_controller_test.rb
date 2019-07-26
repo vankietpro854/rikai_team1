@@ -3,42 +3,37 @@ require 'test_helper'
 class SuportsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @suport = suports(:one)
+    @user = users(:michael)
   end
 
   test "should get index" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true'} }
     get suports_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_suport_url
+    get suport_new_path
     assert_response :success
   end
 
   test "should create suport" do
     assert_difference('Suport.count') do
-      post suports_url, params: { suport: { emai: @suport.emai, message: @suport.message, name: @suport.name, subject: @suport.subject } }
+      post suports_url, params: { suport: { name: @suport.name,
+                                            emai: @suport.emai, 
+                                            subject: @suport.message, 
+                                            message: @suport.subject } }
     end
 
     assert_redirected_to suport_url(Suport.last)
   end
 
-  test "should show suport" do
-    get suport_url(@suport)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_suport_url(@suport)
-    assert_response :success
-  end
-
-  test "should update suport" do
-    patch suport_url(@suport), params: { suport: { emai: @suport.emai, message: @suport.message, name: @suport.name, subject: @suport.subject } }
-    assert_redirected_to suport_url(@suport)
-  end
-
   test "should destroy suport" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true'} }
     assert_difference('Suport.count', -1) do
       delete suport_url(@suport)
     end

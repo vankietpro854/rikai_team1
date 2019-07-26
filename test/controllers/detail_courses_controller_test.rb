@@ -3,14 +3,21 @@ require 'test_helper'
 class DetailCoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @detail_course = detail_courses(:one)
+    @user = users(:michael)
   end
 
   test "should get index" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get detail_courses_url
     assert_response :success
   end
 
   test "should get new" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get new_detail_course_url
     assert_response :success
   end
@@ -24,11 +31,17 @@ class DetailCoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show detail_course" do
-    get detail_course_url(@detail_course)
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
+    assert_redirected_to detail_course_url(@detail_course)
     assert_response :success
   end
 
   test "should get edit" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     get edit_detail_course_url(@detail_course)
     assert_response :success
   end
@@ -39,6 +52,9 @@ class DetailCoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy detail_course" do
+    get login_path
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password', admin: 'true' } }
     assert_difference('DetailCourse.count', -1) do
       delete detail_course_url(@detail_course)
     end
