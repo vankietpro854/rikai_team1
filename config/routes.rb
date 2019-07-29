@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :suports, only: [:create, :destroy, :index]
+  resources :suports, only: [:create, :destroy, :index, :show]
   resources :detail_courses
   resources :reports
   resources :sessions
