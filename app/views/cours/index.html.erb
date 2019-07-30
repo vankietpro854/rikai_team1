@@ -6,11 +6,15 @@
   <form class="form-inline my-2 my-lg-1" style="width: 30%;">
       <%= form_tag(cours_path, method: :get) do %>
       <%= text_field_tag :timkiem , params[:timkiem] %>
-      <div style="text-align: -webkit-center; width: 100%;"> <%= submit_tag 'Tìm kiếm', name: nil %> </div>     
+      <div style="text-align: -webkit-center; width: 100%;"> <%= submit_tag 'Tìm kiếm', name: nil %> </div>
       <% end %>
   </form>
 </div>
-<%= link_to 'Tạo khóa học mới', new_cour_path %>
+
+  <% if current_user.admin? %>
+    <%= link_to 'Tạo khóa học mới', new_cour_path %>
+  <% end %>
+  
 <hr>
 <table class="table">
   <thead class="thead-dark">
@@ -34,14 +38,14 @@
         <td><%= cour.time_learn %> month </td>
         <td class="text-center">
           <% if current_user.admin? %>
-          <%= link_to 'Show', cour %> | 
+          <%= link_to 'Show', cour %> |
           <%= link_to 'Edit', edit_cour_path(cour) %> |
           <%= link_to 'Destroy', cour, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% else %>
              <%= link_to 'Show', cour %>
           <% end %>
         </td>
-        
+
       </tr>
     <% end %>
   </tbody>
